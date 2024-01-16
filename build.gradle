@@ -16,7 +16,6 @@
  */
 
 apply from: rootProject.file('dependencies.gradle')
-apply plugin: 'maven-publish'
 
 subprojects { Project subproject ->
     buildscript {
@@ -39,18 +38,4 @@ subprojects { Project subproject ->
 
 task wrapper(type: Wrapper) {
     gradleVersion = '4.2.1'
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.gmo-media'
-                artifactId = 'twitter-kit-android'
-                version = '3.3.0'
-            }
-        }
-    }
 }
