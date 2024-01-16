@@ -16,6 +16,10 @@
  */
 
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+group = 'com.github.gmo-media'
+version = '3.3.0'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -71,5 +75,19 @@ dependencies {
     testCompile(dependency.robolectric) {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.gmo-media'
+                artifactId = 'twitter-kit-android'
+                version = '3.3.0'
+            }
+        }
     }
 }
