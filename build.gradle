@@ -37,5 +37,5 @@ subprojects { Project subproject ->
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '7.0.0'
+    gradleVersion = '7.1.1'
 }
